@@ -1,0 +1,114 @@
+// Site Header
+
+#root {
+    overflow: hidden;
+}
+
+.site-header {
+    //background: rgba(0,0,0,0.8);
+    padding: 1.5rem var(--padding);
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+
+    .site-logo {
+        width: 15rem;
+        z-index: 9999;
+
+        a {
+            display: block;
+
+            img {
+                display: block;
+            }
+        }
+
+        @media (min-width: $laptop) {
+            width: 16rem;
+        }
+    }
+    .menu-toggle {
+        position: fixed;
+        top: 0em;
+        right: 0rem;
+        background: rgba(255,255,255,0.9);
+        width: 4.5rem;
+        height: 4.5rem;
+        cursor: pointer;
+        text-indent: -500000px;
+        z-index: 999;
+
+        @media (min-width: $tablet) {
+            width: 5rem;
+            height: 5rem;
+        }
+        @media (min-width: $desktop) {
+            width: 6rem;
+            height: 6rem;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 1.5rem;
+            right: 1rem;
+            height: 2px;
+            background: black;
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 48%;
+            bottom: 1.5rem;
+            left: 1rem;
+            right: 1rem;
+            border-top: solid 2px black;
+            border-bottom: solid 2px black;
+        }
+    }
+    nav {
+        @include hidden;
+        position: fixed;
+        background: #f7f7f7;
+        z-index: 9;
+        height: 100vh;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        
+        h2 {
+            font-size: 11rem;
+            margin: 0;
+            padding: var(--padding) var(--padding) 0rem var(--padding);
+            line-height: 7rem;
+            color: #f7f7f7;
+            background: $data-bg2;
+            text-indent: -0.5rem;
+        }
+        ul {
+
+            li {
+
+                a {
+                    display: block;
+                    padding: var(--padding);
+                    transition: all 0.4s ease-in-out;
+                    border-bottom: solid 1px rgba(0,0,0,0.1);
+                    border-top: solid 1px white;
+
+                    &:hover {
+                        background: white;
+                    }
+                }
+            }
+        }
+    }
+    .menu-toggle:checked + nav {
+        @include visible;
+        height: 100vh;
+        overflow: scroll;
+    }
+}
